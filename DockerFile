@@ -1,0 +1,19 @@
+FROM node:9-slim
+
+MAINTAINER BagginzLab <princefreedom1@gmail.com>
+EXPOSE 30664
+
+RUN echo "Asia/Bangkok" > /etc/timezone
+RUN echo "Asia/Bangkok" > /etc/localtime
+RUN dpkg-reconfigure -f noninteractive tzdata
+
+ENV INSTALL_PATH /project
+RUN mkdir -p $INSTALL_PATH
+WORKDIR $INSTALL_PATH
+
+ADD $INSTALL_PATH/.  .
+RUN yarn install
+RUN npm i nyc -g
+RUN chmod 755 *.sh
+
+CMD ["./startscript.sh"]
