@@ -1,0 +1,16 @@
+<div class="jumbotron" ng-init="initMT()">
+    <h1>โปรแกรมหารายชื่อรุ่น 1.1</h1>
+    <div ng-include="'views/partial/partial.html'"></div>
+    <div class="container">
+        <div class="row" >
+            <h3>Please enter your Keyword:</h3>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Keyword {{inputkeywords}}</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" ng-model="text" placeholder="Enter text">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default" >Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
