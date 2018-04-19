@@ -7,10 +7,10 @@ var moment = require('moment');
 var client = require('scp2')
 
 client.defaults({
-    port: 22,
-    host: '10.0.0.97',
-    username: 'root',
-    password: 'tbdadmin'
+    port: 24,
+    host: '172.16.0.250',
+    username: 'itptbd',
+    password: 'itpadmin1#'
 });
 
 function wirteData() {
@@ -28,5 +28,16 @@ function wirteData() {
 // setTimeout(() => {
 //     wirteData();
 // }, 1000);
+
+function uploadFile(){
+    client.upload('C:/Users/biw/Desktop/files.txt', '/DataTeam/PowerBI/files.txt',(err)=>{
+        console.log("ERROR ::: ",err);
+    });
+}
+
+// setTimeout(() => {
+//     uploadFile();
+// }, 1000);
+
 
 module.exports = router;

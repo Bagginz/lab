@@ -22,6 +22,7 @@ var configMySQL = {
     password: 'tbdgointer',
     database: 'theiconwebcrm'
     // database: 'adwords'
+    // database: 'erp'
 };
 
 var configMySQLERP = {

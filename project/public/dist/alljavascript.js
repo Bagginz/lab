@@ -114,124 +114,7 @@ var token = "XXX";
         }
     });
 })();
-(function() {
-    app.controller('scrubCtrl', function ($scope, $modal, scrubService) {
-
-        $scope.Scrub ={};
-        $scope.setScrubDomain = function(){
-            var Filepath = "C:/Users/biw/Desktop/ScrubFile/scrubExport.txt";
-            scrubService.setScrubDomain(Filepath).then(function(filepath){
-                console.log(filepath);
-            });
-        };
-    });
-})();
-
-(function(){
-    app.factory('scrubService', function ($http,$q) {
-        var thisfact = {};
-
-        thisfact.setScrubDomain = function(obj){
-            spinner.show();
-            var defer = $q.defer();
-            $http({
-                method: "POST",
-                url: '/scrub/setScrubDomain',
-                contentType: 'application/json; charset=utf-8',
-                data: { filepath: obj},
-                dataType: 'json',
-                headers: {
-                    'RequestVerificationToken': token
-                }
-            }).success(function(data) {
-                spinner.hide();
-                defer.resolve(data);
-            }).error(function(data) {
-                spinner.hide();
-                defer.reject(data);
-            });
-            return defer.promise;
-        };
-        return thisfact;
-
-    });
-})();
 !function(n){function r(o){if(t[o])return t[o].exports;var e=t[o]={i:o,l:!1,exports:{}};return n[o].call(e.exports,e,e.exports,r),e.l=!0,e.exports}var t={};r.m=n,r.c=t,r.d=function(n,t,o){r.o(n,t)||Object.defineProperty(n,t,{configurable:!1,enumerable:!0,get:o})},r.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return r.d(t,"a",t),t},r.o=function(n,r){return Object.prototype.hasOwnProperty.call(n,r)},r.p="",r(r.s=0)}([function(n,r,t){!function(){throw new Error('Cannot find module "babel-polyfill"')}(),function(){throw new Error('Cannot find module "/project/public/js/app.js"')}()}]);
-(function(){
-    app.factory('searchEngineService', function ($http,$q) {
-        var thisfact = {};
-        thisfact.addKeyword = function(data){
-            spinner.show();
-            var defer = $q.defer();
-            console.log(data);
-            $http({
-                method: "POST",
-                url: '/searchengine/addKeyword',
-                contentType: 'application/json; charset=utf-8',
-                data : data,
-                dataType: 'json',
-                headers: {
-                    'RequestVerificationToken': token
-                }
-            }).success(function(data) {
-                spinner.hide();
-                defer.resolve(data);
-            }).error(function(data) {
-                spinner.hide();
-                defer.reject(data);
-            });
-            return defer.promise;
-        };
-
-        return thisfact;
-    });
-})();
-(function() {
-    app.controller('verificationCtrl', function ($scope, $modal, verificationService) {
-
-        $scope.setFilePath = function(){
-            var getfilepath = document.getElementById('exampleInputFile').value;
-            if(getfilepath!== undefined && getfilepath!=""){
-                var file = getfilepath.split("\\");
-                var filepath = "D:/" + file[2];
-                console.log(filepath);
-                verificationService.FindThisData(filepath).then(function(data){
-                    console.log(data);
-                });
-            }
-        };
-    });
-})();
-
-(function(){
-    app.factory('verificationService', function ($http,$q) {
-        var thisfact = {};
-
-        thisfact.FindThisData = function(obj){
-            spinner.show();
-            var defer = $q.defer();
-            $http({
-                method: "POST",
-                url: '/verification/FindThisData',
-                contentType: 'application/json; charset=utf-8',
-                data: { filepath: obj},
-                dataType: 'json',
-                headers: {
-                    'RequestVerificationToken': token
-                }
-            }).success(function(data) {
-                spinner.hide();
-                defer.resolve(data);
-            }).error(function(data) {
-                spinner.hide();
-                defer.reject(data);
-            });
-            return defer.promise;
-        };
-        return thisfact;
-
-    });
-})();
 (function(){
     app.controller('mainCtrl', function ($scope,mainService) {
         $scope.activePage = 1; // Home
@@ -532,6 +415,123 @@ var token = "XXX";
             return defer.promise;
         };
 
+        return thisfact;
+
+    });
+})();
+(function() {
+    app.controller('scrubCtrl', function ($scope, $modal, scrubService) {
+
+        $scope.Scrub ={};
+        $scope.setScrubDomain = function(){
+            var Filepath = "C:/Users/biw/Desktop/ScrubFile/scrubExport.txt";
+            scrubService.setScrubDomain(Filepath).then(function(filepath){
+                console.log(filepath);
+            });
+        };
+    });
+})();
+
+(function(){
+    app.factory('scrubService', function ($http,$q) {
+        var thisfact = {};
+
+        thisfact.setScrubDomain = function(obj){
+            spinner.show();
+            var defer = $q.defer();
+            $http({
+                method: "POST",
+                url: '/scrub/setScrubDomain',
+                contentType: 'application/json; charset=utf-8',
+                data: { filepath: obj},
+                dataType: 'json',
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            }).success(function(data) {
+                spinner.hide();
+                defer.resolve(data);
+            }).error(function(data) {
+                spinner.hide();
+                defer.reject(data);
+            });
+            return defer.promise;
+        };
+        return thisfact;
+
+    });
+})();
+(function(){
+    app.factory('searchEngineService', function ($http,$q) {
+        var thisfact = {};
+        thisfact.addKeyword = function(data){
+            spinner.show();
+            var defer = $q.defer();
+            console.log(data);
+            $http({
+                method: "POST",
+                url: '/searchengine/addKeyword',
+                contentType: 'application/json; charset=utf-8',
+                data : data,
+                dataType: 'json',
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            }).success(function(data) {
+                spinner.hide();
+                defer.resolve(data);
+            }).error(function(data) {
+                spinner.hide();
+                defer.reject(data);
+            });
+            return defer.promise;
+        };
+
+        return thisfact;
+    });
+})();
+(function() {
+    app.controller('verificationCtrl', function ($scope, $modal, verificationService) {
+
+        $scope.setFilePath = function(){
+            var getfilepath = document.getElementById('exampleInputFile').value;
+            if(getfilepath!== undefined && getfilepath!=""){
+                var file = getfilepath.split("\\");
+                var filepath = "D:/" + file[2];
+                console.log(filepath);
+                verificationService.FindThisData(filepath).then(function(data){
+                    console.log(data);
+                });
+            }
+        };
+    });
+})();
+
+(function(){
+    app.factory('verificationService', function ($http,$q) {
+        var thisfact = {};
+
+        thisfact.FindThisData = function(obj){
+            spinner.show();
+            var defer = $q.defer();
+            $http({
+                method: "POST",
+                url: '/verification/FindThisData',
+                contentType: 'application/json; charset=utf-8',
+                data: { filepath: obj},
+                dataType: 'json',
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            }).success(function(data) {
+                spinner.hide();
+                defer.resolve(data);
+            }).error(function(data) {
+                spinner.hide();
+                defer.reject(data);
+            });
+            return defer.promise;
+        };
         return thisfact;
 
     });

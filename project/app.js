@@ -18,6 +18,7 @@ var whois = require('./routes/whois');
 var testTel = require('./routes/testTel');
 var testSendmail = require('./routes/testSendmail');
 var updatebusinesstype = require('./routes/updatebusinesstype');
+var updateoldlist = require('./routes/updateoldlist');
 
 var fs = require('fs');
 
@@ -59,6 +60,7 @@ app.use('/whois',whois);
 app.use('/updatebusinesstype',updatebusinesstype);
 app.use('/testTel',testTel);
 app.use('/testSendmail',testSendmail);
+app.use('/updateoldlist',updateoldlist);
 
 
 app.set('port', process.env.PORT || 3064);
